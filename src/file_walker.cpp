@@ -40,6 +40,9 @@ FileWalker::~FileWalker()
 
 std::vector<std::string> FileWalker::walk(const std::filesystem::path& path)
 {
+    if (!std::filesystem::exists(path)) {
+        return {};
+    }
     if (!std::filesystem::is_directory(path)) {
         return { path.string() };
     }
