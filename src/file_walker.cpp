@@ -17,7 +17,8 @@ FileWalker::FileWalker(Method method, size_t threads_size)
         throw std::runtime_error("Invalid walk method");
         break;
     }
-
+    
+    m_threads.reserve(threads_size);
     for (size_t i = 0; i < threads_size; ++i) {
         m_threads.emplace_back(func, this);
     }
