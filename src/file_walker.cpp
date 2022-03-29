@@ -57,7 +57,7 @@ std::vector<std::string> FileWalker::walk(const std::filesystem::path& path)
     m_cond.notify_one();
 
     while (m_working_count != 0) { // wait for finished
-        ;
+        std::this_thread::yield();
     }
 
     return m_result;
